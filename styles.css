@@ -1,0 +1,223 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.image-background img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.container {
+    text-align: center;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-register h1 {
+    font-family: 'Great Vibes', cursive;
+    color: #b0428a;
+    font-size: 10em;
+    font-weight: bold;
+    animation: zoomInOut 3s infinite;
+    margin-bottom: 0;
+}
+
+.login-register p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3em;
+    margin: 0;
+}
+
+/* Container for the entire form */
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Container for input fields */
+.input-container {
+    position: relative; /* To position the icon */
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+/* Styling for input fields */
+.input-container input,
+.input-container select {
+    width: 100%; /* Full width for inputs */
+    padding: 10px;
+    padding-left: 40px; /* Space for the icon */
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+}
+
+/* Styling for input icons */
+.input-container .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1.2em; /* Adjust size as needed */
+}
+
+/* Container for country code and phone number */
+.country-phone-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px; /* Restrict width to fit the form */
+}
+
+/* Styling for country code and phone number */
+.country-phone-container .country-code {
+    flex: 1; /* Take up remaining space */
+    margin-right: 10px;
+}
+
+.country-phone-container .phone-number {
+    flex: 2; /* Take up more space */
+}
+
+/* Container for seeking jobs options */
+.seeking-jobs-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    max-width: 600px; /* Restrict width to fit the form */
+}
+
+.seeking-jobs-container label {
+    margin-right: 20px;
+    font-size: 1em;
+}
+
+/* Buttons */
+.login-register button,
+.dialog button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.2em;
+    margin: 10px 0;
+    width: 200px;
+    text-align: center;
+}
+
+.login-register button:hover,
+.dialog button:hover {
+    background-color: #333;
+}
+
+.top-buttons {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.top-buttons button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    text-align: center;
+}
+
+.top-buttons button:hover {
+    background-color: #333;
+}
+
+#welcomeMessage,
+#loginMessage,
+#registerMessage {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 20px;
+    display: none; /* Ensure messages are hidden initially */
+}
+
+#homeContent, #aboutContent, #placesContent, #contactContent, #dubaiContent {
+    display: none;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.form-group input {
+    width: calc(100% - 10px); /* Ensure all input boxes have the same width */
+    padding: 5px;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+#country-code, #mobile-number {
+    display: inline-block;
+}
+
+#country-code {
+    width: 20%; /* Adjusted width for the country code */
+}
+
+#mobile-number {
+    width: 75%; /* Adjusted width for the mobile number */
+    margin-left: 5%; /* Add space between country code and mobile number */
+}
+
+.seeking-jobs {
+    position: absolute;
+    top: 20px; /* Adjust based on your layout */
+    right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.dubai-info {
+    font-size: 1.5em; /* Adjust as needed for large font size */
+    font-style: italic; /* Italicize the text */
+}
+
+.celebrate {
+    /* Celebration effect styles */
+    animation: celebrate 2s;
+}
+
+@keyframes celebrate {
+    0% { color: #D8A0C4; }
+    50% { color: #FFDDC1; }
+    100% { color: #D8A0C4; }
+}
+
+@keyframes zoomInOut {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}

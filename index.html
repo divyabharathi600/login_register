@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Dubai</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="image-background">
+        <img src="image_frontpage.png" alt="Dubai Background">
+    </div>
+
+    <div class="container">
+        <!-- Login/Register Section -->
+        <div id="loginRegisterSection" class="login-register">
+            <h1>Welcome to Explore Dubai!</h1>
+            <p>Click here to know more information about Dubai</p>
+            <div id="loginRegisterButtons" class="buttons">
+                <button onclick="showLoginForm()">Login</button>
+                <button onclick="showRegisterForm()">Register</button>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div id="dialogOverlay" class="dialog-overlay" style="display: none;"></div>
+
+        <!-- Login Dialog -->
+        <div id="loginDialog" class="dialog" style="display: none;">
+            <h2>Login</h2>
+            <div class="input-container">
+                <input type="email" id="loginEmail" placeholder="Email">
+                <span class="icon">📧</span>
+            </div>
+            <div class="input-container">
+                <input type="password" id="loginPassword" placeholder="Password">
+                <span class="icon">🔒</span>
+            </div>
+            <button onclick="login()">Login</button>
+            <button onclick="closeDialog()">Close</button>
+
+            <!-- Error message container -->
+            <div id="loginMessage" style="display:none; color: red; margin-top: 10px;"></div>
+        </div>
+    </div>
+    
+
+        <!-- Registration Dialog -->
+        <!-- Registration Dialog -->
+<div id="registerDialog" class="dialog" style="display: none;">
+    <div class="dialog-content">
+        <button class="close-btn" onclick="closeDialog()">&times;</button>
+        <h2>Register</h2>
+        <p>Create your account:</p>
+        <form id="registerForm">
+            <div class="input-container">
+                <i class="fas fa-user icon"></i>
+                <input type="text" id="firstName" placeholder="First Name" required>
+            </div>
+            <div class="input-container">
+                <i class="fas fa-user icon"></i>
+                <input type="text" id="lastName" placeholder="Last Name" required>
+            </div>
+            <div class="input-container">
+                <i class="fas fa-envelope icon"></i>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+            </div>
+            <div class="input-container">
+                <i class="fas fa-lock icon"></i>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+            </div>
+            <div class="input-container">
+                <i class="fas fa-lock icon"></i>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+            <div class="input-container phone-container">
+                <select id="countryCode" required>
+                    <option value="" disabled selected>Country Code</option>
+                    
+                    <option value="+1" data-flag="🇺🇸">+1 (USA)</option>
+                    <option value="+44" data-flag="🇬🇧">+44 (UK)</option>
+                    <option value="+91" data-flag="🇮🇳">+91 (India)</option>
+                    <option value="+81" data-flag="🇯🇵">+81 (Japan)</option>
+                    <option value="+49" data-flag="🇩🇪">+49 (Germany)</option>
+                    <option value="+33" data-flag="🇫🇷">+33 (France)</option>
+                    <option value="+39" data-flag="🇮🇹">+39 (Italy)</option>
+                    <option value="+34" data-flag="🇪🇸">+34 (Spain)</option>
+                    <option value="+61" data-flag="🇦🇺">+61 (Australia)</option>
+                    <option value="+55" data-flag="🇧🇷">+55 (Brazil)</option>
+                    <option value="+7" data-flag="🇷🇺">+7 (Russia)</option>
+                    <option value="+86" data-flag="🇨🇳">+86 (China)</option>
+                    <option value="+27" data-flag="🇿🇦">+27 (South Africa)</option>
+                    <option value="+971" data-flag="🇦🇪">+971 (UAE)</option>
+                    <option value="+52" data-flag="🇲🇽">+52 (Mexico)</option>
+                    <option value="+20" data-flag="🇪🇬">+20 (Egypt)</option>
+                    <option value="+41" data-flag="🇨🇭">+41 (Switzerland)</option>
+                    <option value="+31" data-flag="🇳🇱">+31 (Netherlands)</option>
+                    <option value="+420" data-flag="🇨🇿">+420 (Czech Republic)</option>
+                    <option value="+48" data-flag="🇵🇱">+48 (Poland)</option>
+                    <option value="+354" data-flag="🇮🇸">+354 (Iceland)</option>
+                    <option value="+32" data-flag="🇧🇪">+32 (Belgium)</option>
+                    <option value="+350" data-flag="🇲🇨">+350 (Gibraltar)</option>
+                    <option value="+93" data-flag="🇦🇫">+93 (Afghanistan)</option>
+                    <option value="+355" data-flag="🇦🇱">+355 (Albania)</option>
+                    <option value="+213" data-flag="🇩🇿">+213 (Algeria)</option>
+                    <option value="+376" data-flag="🇦🇩">+376 (Andorra)</option>
+                    <option value="+244" data-flag="🇦🇴">+244 (Angola)</option>
+                    <option value="+1268" data-flag="🇦🇬">+1268 (Antigua and Barbuda)</option>
+                    <option value="+54" data-flag="🇦🇷">+54 (Argentina)</option>
+                    <option value="+374" data-flag="🇦🇲">+374 (Armenia)</option>
+                    <option value="+297" data-flag="🇦🇼">+297 (Aruba)</option>
+                    <option value="+61" data-flag="🇦🇺">+61 (Australia)</option>
+                    <option value="+43" data-flag="🇦🇹">+43 (Austria)</option>
+                    <option value="+994" data-flag="🇦🇿">+994 (Azerbaijan)</option>
+                    <option value="+973" data-flag="🇧🇭">+973 (Bahrain)</option>
+                    <option value="+880" data-flag="🇧🇩">+880 (Bangladesh)</option>
+                    <option value="+1246" data-flag="🇧🇧">+1246 (Barbados)</option>
+                    <option value="+375" data-flag="🇧🇾">+375 (Belarus)</option>
+                    <option value="+32" data-flag="🇧🇪">+32 (Belgium)</option>
+                    <option value="+501" data-flag="🇧🇿">+501 (Belize)</option>
+                    <option value="+229" data-flag="🇧🇯">+229 (Benin)</option>
+                    <option value="+1441" data-flag="🇧🇲">+1441 (Bermuda)</option>
+                    <option value="+975" data-flag="🇧🇹">+975 (Bhutan)</option>
+                    <option value="+591" data-flag="🇧🇴">+591 (Bolivia)</option>
+                    <option value="+387" data-flag="🇧🇦">+387 (Bosnia and Herzegovina)</option>
+                    <option value="+267" data-flag="🇧🇼">+267 (Botswana)</option>
+                    <option value="+55" data-flag="🇧🇷">+55 (Brazil)</option>
+                    <option value="+246" data-flag="🇧🇲">+246 (British Indian Ocean Territory)</option>
+                    <option value="+673" data-flag="🇧🇭">+673 (Brunei)</option>
+                    <option value="+359" data-flag="🇧🇬">+359 (Bulgaria)</option>
+                    <option value="+226" data-flag="🇧🇫">+226 (Burkina Faso)</option>
+                    <option value="+257" data-flag="🇧🇮">+257 (Burundi)</option>
+                    <option value="+855" data-flag="🇲🇲">+855 (Myanmar)</option>
+                    <option value="+237" data-flag="🇨🇲">+237 (Cameroon)</option>
+                    <option value="+1" data-flag="🇨🇦">+1 (Canada)</option>
+                    <option value="+238" data-flag="🇨🇻">+238 (Cape Verde)</option>
+                    <option value="+345" data-flag="🇰🇾">+345 (Cayman Islands)</option>
+                    <option value="+236" data-flag="🇨🇫">+236 (Central African Republic)</option>
+                    <option value="+235" data-flag="🇹🇩">+235 (Chad)</option>
+                    <option value="+56" data-flag="🇨🇱">+56 (Chile)</option>
+                    <option value="+86" data-flag="🇨🇳">+86 (China)</option>
+                    <option value="+57" data-flag="🇨🇴">+57 (Colombia)</option>
+                    <option value="+269" data-flag="🇰🇲">+269 (Comoros)</option>
+                    <option value="+242" data-flag="🇨🇬">+242 (Congo)</option>
+                    <option value="+243" data-flag="🇨🇩">+243 (Democratic Republic of the Congo)</option>
+                    <option value="+682" data-flag="🇨🇰">+682 (Cook Islands)</option>
+                    <option value="+506" data-flag="🇨🇷">+506 (Costa Rica)</option>
+                    <option value="+225" data-flag="🇨🇮">+225 (Ivory Coast)</option>
+                    <option value="+385" data-flag="🇭🇷">+385 (Croatia)</option>
+                    <option value="+53" data-flag="🇨🇺">+53 (Cuba)</option>
+                    <option value="+357" data-flag="🇨🇾">+357 (Cyprus)</option>
+                    <option value="+420" data-flag="🇨🇿">+420 (Czech Republic)</option>
+                    <option value="+45" data-flag="🇩🇰">+45 (Denmark)</option>
+                    <option value="+253" data-flag="🇩🇯">+253 (Djibouti)</option>
+                    <option value="+1767" data-flag="🇲🇸">+1767 (Dominica)</option>
+                    <option value="+1809" data-flag="🇩🇴">+1809 (Dominican Republic)</option>
+                    <option value="+593" data-flag="🇪🇨">+593 (Ecuador)</option>
+                    <option value="+20" data-flag="🇪🇬">+20 (Egypt)</option>
+                    <option value="+503" data-flag="🇸🇻">+503 (El Salvador)</option>
+                    <option value="+240" data-flag="🇬🇶">+240 (Equatorial Guinea)</option>
+                    <option value="+291" data-flag="🇪🇷">+291 (Eritrea)</option>
+                    <option value="+372" data-flag="🇪🇪">+372 (Estonia)</option>
+                    <option value="+251" data-flag="🇪🇹">+251 (Ethiopia)</option>
+                    <option value="+500" data-flag="🇲🇸">+500 (Falkland Islands)</option>
+                    <option value="+298" data-flag="🇫🇮">+298 (Faroe Islands)</option>
+                    <option value="+679" data-flag="🇫🇯">+679 (Fiji)</option>
+                    <option value="+33" data-flag="🇫🇷">+33 (France)</option>
+                    <option value="+689" data-flag="🇵🇫">+689 (French Polynesia)</option>
+                    <option value="+241" data-flag="🇲🇬">+241 (Gabon)</option>
+                    <option value="+220" data-flag="🇬🇲">+220 (Gambia)</option>
+                    <option value="+995" data-flag="🇬🇪">+995 (Georgia)</option>
+                    <option value="+49" data-flag="🇩🇪">+49 (Germany)</option>
+                    <option value="+233" data-flag="🇬🇭">+233 (Ghana)</option>
+                    <option value="+350" data-flag="🇲🇨">+350 (Gibraltar)</option>
+                    <option value="+30" data-flag="🇬🇷">+30 (Greece)</option>
+                    <option value="+299" data-flag="🇬🇱">+299 (Greenland)</option>
+                    <option value="+1473" data-flag="🇬🇩">+1473 (Grenada)</option>
+                    <option value="+590" data-flag="🇬🇵">+590 (Guadeloupe)</option>
+                    <option value="+671" data-flag="🇲🇲">+671 (Guam)</option>
+                    <option value="+502" data-flag="🇲🇽">+502 (Guatemala)</option>
+                    <option value="+224" data-flag="🇬🇳">+224 (Guinea)</option>
+                    <option value="+245" data-flag="🇬🇼">+245 (Guinea-Bissau)</option>
+                    <option value="+592" data-flag="🇬🇾">+592 (Guyana)</option>
+                    <option value="+509" data-flag="🇭🇹">+509 (Haiti)</option>
+                    <option value="+504" data-flag="🇭🇳">+504 (Honduras)</option>
+                    <option value="+852" data-flag="🇭🇰">+852 (Hong Kong)</option>
+                    <option value="+36" data-flag="🇭🇺">+36 (Hungary)</option>
+                    <option value="+354" data-flag="🇮🇸">+354 (Iceland)</option>
+                    <option value="+91" data-flag="🇮🇳">+91 (India)</option>
+                    <option value="+62" data-flag="🇮🇩">+62 (Indonesia)</option>
+                    <option value="+98" data-flag="🇮🇷">+98 (Iran)</option>
+                    <option value="+964" data-flag="🇮🇶">+964 (Iraq)</option>
+                    <option value="+353" data-flag="🇮🇪">+353 (Ireland)</option>
+                    <option value="+972" data-flag="🇮🇱">+972 (Israel)</option>
+                    <option value="+39" data-flag="🇮🇹">+39 (Italy)</option>
+                    <option value="+225" data-flag="🇨🇮">+225 (Ivory Coast)</option>
+                    <option value="+1" data-flag="🇯🇲">+1 (Jamaica)</option>
+                    <option value="+81" data-flag="🇯🇵">+81 (Japan)</option>
+                    <option value="+962" data-flag="🇯🇴">+962 (Jordan)</option>
+                    <option value="+7" data-flag="🇰🇿">+7 (Kazakhstan)</option>
+                    <option value="+254" data-flag="🇰🇪">+254 (Kenya)</option>
+                    <option value="+686" data-flag="🇰🇮">+686 (Kiribati)</option>
+                    <option value="+82" data-flag="🇰🇷">+82 (South Korea)</option>
+                    <option value="+965" data-flag="🇰🇼">+965 (Kuwait)</option>
+                    <option value="+996" data-flag="🇲🇲">+996 (Kyrgyzstan)</option>
+                    <option value="+856" data-flag="🇱🇦">+856 (Laos)</option>
+                    <option value="+371" data-flag="🇱🇻">+371 (Latvia)</option>
+                    <option value="+961" data-flag="🇱🇧">+961 (Lebanon)</option>
+                    <option value="+266" data-flag="🇱🇸">+266 (Lesotho)</option>
+                    <option value="+231" data-flag="🇱🇸">+231 (Liberia)</option>
+                    <option value="+218" data-flag="🇱🇾">+218 (Libya)</option>
+                    <option value="+423" data-flag="🇱🇮">+423 (Liechtenstein)</option>
+                    <option value="+370" data-flag="🇱🇹">+370 (Lithuania)</option>
+                    <option value="+352" data-flag="🇱🇺">+352 (Luxembourg)</option>
+                    <option value="+853" data-flag="🇲🇴">+853 (Macau)</option>
+                    <option value="+389" data-flag="🇲🇰">+389 (North Macedonia)</option>
+                    <option value="+261" data-flag="🇲🇬">+261 (Madagascar)</option>
+                    <option value="+265" data-flag="🇲🇼">+265 (Malawi)</option>
+                    <option value="+60" data-flag="🇲🇾">+60 (Malaysia)</option>
+                    <option value="+960" data-flag="🇲🇻">+960 (Maldives)</option>
+                    <option value="+223" data-flag="🇲🇱">+223 (Mali)</option>
+                    <option value="+356" data-flag="🇲🇹">+356 (Malta)</option>
+                    <option value="+692" data-flag="🇲🇭">+692 (Marshall Islands)</option>
+                    <option value="+596" data-flag="🇲🇶">+596 (Martinique)</option>
+                    <option value="+230" data-flag="🇲🇺">+230 (Mauritius)</option>
+                    <option value="+262" data-flag="🇲🇶">+262 (Mayotte)</option>
+                    <option value="+52" data-flag="🇲🇽">+52 (Mexico)</option>
+                    <option value="+691" data-flag="🇲🇵">+691 (Micronesia)</option>
+                    <option value="+373" data-flag="🇲🇩">+373 (Moldova)</option>
+                    <option value="+377" data-flag="🇲🇨">+377 (Monaco)</option>
+                    <option value="+976" data-flag="🇲🇳">+976 (Mongolia)</option>
+                    <option value="+382" data-flag="🇲🇪">+382 (Montenegro)</option>
+                    <option value="+1664" data-flag="🇲🇸">+1664 (Montserrat)</option>
+                    <option value="+212" data-flag="🇲🇦">+212 (Morocco)</option>
+                    <option value="+258" data-flag="🇲🇿">+258 (Mozambique)</option>
+                    <option value="+95" data-flag="🇲🇲">+95 (Myanmar)</option>
+                    <option value="+264" data-flag="🇳🇦">+264 (Namibia)</option>
+                    <option value="+674" data-flag="🇳🇵">+674 (Nauru)</option>
+                    <option value="+977" data-flag="🇳🇵">+977 (Nepal)</option>
+                    <option value="+31" data-flag="🇳🇱">+31 (Netherlands)</option>
+                    <option value="+64" data-flag="🇳🇿">+64 (New Zealand)</option>
+                    <option value="+505" data-flag="🇳🇮">+505 (Nicaragua)</option>
+                    <option value="+227" data-flag="🇳🇪">+227 (Niger)</option>
+                    <option value="+234" data-flag="🇳🇬">+234 (Nigeria)</option>
+                    <option value="+683" data-flag="🇳🇺">+683 (Niue)</option>
+                    <option value="+672" data-flag="🇳🇫">+672 (Norfolk Island)</option>
+                    <option value="+1670" data-flag="🇲🇲">+1670 (Northern Mariana Islands)</option>
+                    <option value="+47" data-flag="🇳🇴">+47 (Norway)</option>
+                    <option value="+968" data-flag="🇴🇲">+968 (Oman)</option>
+                    <option value="+92" data-flag="🇵🇰">+92 (Pakistan)</option>
+                    <option value="+680" data-flag="🇵🇼">+680 (Palau)</option>
+                    <option value="+970" data-flag="🇵🇸">+970 (Palestine)</option>
+                    <option value="+507" data-flag="🇵🇦">+507 (Panama)</option>
+                    <option value="+675" data-flag="🇵🇬">+675 (Papua New Guinea)</option>
+                    <option value="+595" data-flag="🇵🇾">+595 (Paraguay)</option>
+                    <option value="+51" data-flag="🇵🇪">+51 (Peru)</option>
+                    <option value="+63" data-flag="🇵🇭">+63 (Philippines)</option>
+                    <option value="+48" data-flag="🇵🇱">+48 (Poland)</option>
+                    <option value="+351" data-flag="🇵🇹">+351 (Portugal)</option>
+                    <option value="+1787" data-flag="🇵🇷">+1787 (Puerto Rico)</option>
+                    <option value="+7" data-flag="🇷🇺">+7 (Russia)</option>
+                    <option value="+250" data-flag="🇷🇼">+250 (Rwanda)</option>
+                    <option value="+685" data-flag="🇼🇸">+685 (Samoa)</option>
+                    <option value="+378" data-flag="🇸🇲">+378 (San Marino)</option>
+                    <option value="+239" data-flag="🇲🇹">+239 (Sao Tome and Principe)</option>
+                    <option value="+966" data-flag="🇸🇦">+966 (Saudi Arabia)</option>
+                    <option value="+221" data-flag="🇸🇳">+221 (Senegal)</option>
+                    <option value="+248" data-flag="🇱🇸">+248 (Seychelles)</option>
+                    <option value="+232" data-flag="🇸🇱">+232 (Sierra Leone)</option>
+                    <option value="+65" data-flag="🇸🇬">+65 (Singapore)</option>
+                    <option value="+421" data-flag="🇸🇰">+421 (Slovakia)</option>
+                    <option value="+386" data-flag="🇸🇮">+386 (Slovenia)</option>
+                    <option value="+677" data-flag="🇸🇧">+677 (Solomon Islands)</option>
+                    <option value="+252" data-flag="🇸🇴">+252 (Somalia)</option>
+                    <option value="+27" data-flag="🇿🇦">+27 (South Africa)</option>
+                    <option value="+34" data-flag="🇪🇸">+34 (Spain)</option>
+                    <option value="+94" data-flag="🇱🇰">+94 (Sri Lanka)</option>
+                    <option value="+249" data-flag="🇸🇩">+249 (Sudan)</option>
+                    <option value="+597" data-flag="🇸🇷">+597 (Suriname)</option>
+                    <option value="+268" data-flag="🇸🇿">+268 (Swaziland)</option>
+                    <option value="+46" data-flag="🇸🇪">+46 (Sweden)</option>
+                    <option value="+41" data-flag="🇨🇭">+41 (Switzerland)</option>
+                    <option value="+963" data-flag="🇸🇾">+963 (Syria)</option>
+                    <option value="+886" data-flag="🇹🇼">+886 (Taiwan)</option>
+                    <option value="+992" data-flag="🇹🇯">+992 (Tajikistan)</option>
+                    <option value="+255" data-flag="🇹🇿">+255 (Tanzania)</option>
+                    <option value="+66" data-flag="🇹🇭">+66 (Thailand)</option>
+                    <option value="+670" data-flag="🇹🇱">+670 (Timor-Leste)</option>
+                    <option value="+228" data-flag="🇹🇬">+228 (Togo)</option>
+                    <option value="+690" data-flag="🇹🇴">+690 (Tonga)</option>
+                    <option value="+216" data-flag="🇹🇳">+216 (Tunisia)</option>
+                    <option value="+90" data-flag="🇹🇷">+90 (Turkey)</option>
+                    <option value="+993" data-flag="🇹🇲">+993 (Turkmenistan)</option>
+                    <option value="+256" data-flag="🇺🇬">+256 (Uganda)</option>
+                    <option value="+380" data-flag="🇺🇦">+380 (Ukraine)</option>
+                    <option value="+971" data-flag="🇦🇪">+971 (United Arab Emirates)</option>
+                    <option value="+44" data-flag="🇬🇧">+44 (United Kingdom)</option>
+                    <option value="+1" data-flag="🇺🇸">+1 (United States)</option>
+                    <option value="+598" data-flag="🇺🇾">+598 (Uruguay)</option>
+                    <option value="+998" data-flag="🇺🇿">+998 (Uzbekistan)</option>
+                    <option value="+678" data-flag="🇻🇺">+678 (Vanuatu)</option>
+                    <option value="+58" data-flag="🇻🇪">+58 (Venezuela)</option>
+                    <option value="+84" data-flag="🇻🇳">+84 (Vietnam)</option>
+                    <option value="+681" data-flag="🇼🇫">+681 (Wallis and Futuna)</option>
+                    <option value="+967" data-flag="🇾🇪">+967 (Yemen)</option>
+                    <option value="+260" data-flag="🇿🇲">+260 (Zambia)</option>
+                    <option value="+263" data-flag="🇿🇼">+263 (Zimbabwe)</option>
+                </select>
+                <input type="tel" id="mobileNumber" placeholder="Mobile Number" required>
+            </div>
+            <div class="input-container">
+                <i class="fas fa-globe icon"></i>
+                <select id="country" required>
+                    <option value="" disabled selected>Select Country</option>
+                    <option value="Afghanistan">Afghanistan 🇦🇫</option>
+                    <option value="Albania">Albania 🇦🇱</option>
+                    <option value="Algeria">Algeria 🇩🇿</option>
+                    <option value="Andorra">Andorra 🇦🇩</option>
+                    <option value="Angola">Angola 🇦🇴</option>
+                    <option value="Antigua and Barbuda">Antigua and Barbuda 🇦🇬</option>
+                    <option value="Argentina">Argentina 🇦🇷</option>
+                    <option value="Armenia">Armenia 🇦🇲</option>
+                    <option value="Australia">Australia 🇦🇺</option>
+                    <option value="Austria">Austria 🇦🇹</option>
+                    <option value="Azerbaijan">Azerbaijan 🇦🇿</option>
+                    <option value="Bahamas">Bahamas 🇧🇸</option>
+                    <option value="Bahrain">Bahrain 🇧🇭</option>
+                    <option value="Bangladesh">Bangladesh 🇧🇩</option>
+                    <option value="Barbados">Barbados 🇧🇧</option>
+                    <option value="Belarus">Belarus 🇧🇾</option>
+                    <option value="Belgium">Belgium 🇧🇪</option>
+                    <option value="Belize">Belize 🇧🇿</option>
+                    <option value="Benin">Benin 🇧🇯</option>
+                    <option value="Bhutan">Bhutan 🇧🇹</option>
+                    <option value="Bolivia">Bolivia 🇧🇴</option>
+                    <option value="Bosnia and Herzegovina">Bosnia and Herzegovina 🇧🇦</option>
+                    <option value="Botswana">Botswana 🇧🇼</option>
+                    <option value="Brazil">Brazil 🇧🇷</option>
+                    <option value="Brunei">Brunei 🇧🇳</option>
+                    <option value="Bulgaria">Bulgaria 🇧🇬</option>
+                    <option value="Burkina Faso">Burkina Faso 🇧🇫</option>
+                    <option value="Burundi">Burundi 🇧🇮</option>
+                    <option value="Cabo Verde">Cabo Verde 🇨🇻</option>
+                    <option value="Cambodia">Cambodia 🇰🇭</option>
+                    <option value="Cameroon">Cameroon 🇨🇲</option>
+                    <option value="Canada">Canada 🇨🇦</option>
+                    <option value="Central African Republic">Central African Republic 🇨🇫</option>
+                    <option value="Chad">Chad 🇹🇩</option>
+                    <option value="Chile">Chile 🇨🇱</option>
+                    <option value="China">China 🇨🇳</option>
+                    <option value="Colombia">Colombia 🇨🇴</option>
+                    <option value="Comoros">Comoros 🇰🇲</option>
+                    <option value="Congo (Congo-Brazzaville)">Congo (Congo-Brazzaville) 🇨🇬</option>
+                    <option value="Congo (Congo-Kinshasa)">Congo (Congo-Kinshasa) 🇨🇩</option>
+                    <option value="Costa Rica">Costa Rica 🇨🇷</option>
+                    <option value="Croatia">Croatia 🇭🇷</option>
+                    <option value="Cuba">Cuba 🇨🇺</option>
+                    <option value="Cyprus">Cyprus 🇨🇾</option>
+                    <option value="Czechia (Czech Republic)">Czechia (Czech Republic) 🇨🇿</option>
+                    <option value="Denmark">Denmark 🇩🇰</option>
+                    <option value="Djibouti">Djibouti 🇩🇯</option>
+                    <option value="Dominica">Dominica 🇩🇲</option>
+                    <option value="Dominican Republic">Dominican Republic 🇩🇴</option>
+                    <option value="Ecuador">Ecuador 🇪🇨</option>
+                    <option value="Egypt">Egypt 🇪🇬</option>
+                    <option value="El Salvador">El Salvador 🇸🇻</option>
+                    <option value="Equatorial Guinea">Equatorial Guinea 🇲🇶</option>
+                    <option value="Eritrea">Eritrea 🇪🇷</option>
+                    <option value="Estonia">Estonia 🇪🇪</option>
+                    <option value="Eswatini (fmr. "Swaziland")">Eswatini (fmr. "Swaziland") 🇸🇿</option>
+                    <option value="Ethiopia">Ethiopia 🇪🇹</option>
+                    <option value="Fiji">Fiji 🇫🇯</option>
+                    <option value="Finland">Finland 🇫🇮</option>
+                    <option value="France">France 🇫🇷</option>
+                    <option value="Gabon">Gabon 🇲🇬</option>
+                    <option value="Gambia">Gambia 🇬🇲</option>
+                    <option value="Georgia">Georgia 🇬🇪</option>
+                    <option value="Germany">Germany 🇩🇪</option>
+                    <option value="Ghana">Ghana 🇬🇭</option>
+                    <option value="Greece">Greece 🇬🇷</option>
+                    <option value="Grenada">Grenada 🇬🇩</option>
+                    <option value="Guatemala">Guatemala 🇲🇽</option>
+                    <option value="Guinea">Guinea 🇬🇳</option>
+                    <option value="Guinea-Bissau">Guinea-Bissau 🇬🇼</option>
+                    <option value="Guyana">Guyana 🇬🇾</option>
+                    <option value="Haiti">Haiti 🇭🇹</option>
+                    <option value="Honduras">Honduras 🇭🇳</option>
+                    <option value="Hungary">Hungary 🇭🇺</option>
+                    <option value="Iceland">Iceland 🇮🇸</option>
+                    <option value="India">India 🇮🇳</option>
+                    <option value="Indonesia">Indonesia 🇮🇩</option>
+                    <option value="Iran">Iran 🇮🇷</option>
+                    <option value="Iraq">Iraq 🇮🇶</option>
+                    <option value="Ireland">Ireland 🇮🇪</option>
+                    <option value="Israel">Israel 🇮🇱</option>
+                    <option value="Italy">Italy 🇮🇹</option>
+                    <option value="Jamaica">Jamaica 🇯🇲</option>
+                    <option value="Japan">Japan 🇯🇵</option>
+                    <option value="Jordan">Jordan 🇯🇴</option>
+                    <option value="Kazakhstan">Kazakhstan 🇰🇿</option>
+                    <option value="Kenya">Kenya 🇰🇪</option>
+                    <option value="Kiribati">Kiribati 🇰🇮</option>
+                    <option value="Korea (North)">Korea (North) 🇰🇵</option>
+                    <option value="Korea (South)">Korea (South) 🇰🇷</option>
+                    <option value="Kuwait">Kuwait 🇰🇼</option>
+                    <option value="Kyrgyzstan">Kyrgyzstan 🇰🇬</option>
+                    <option value="Laos">Laos 🇱🇦</option>
+                    <option value="Latvia">Latvia 🇱🇻</option>
+                    <option value="Lebanon">Lebanon 🇱🇧</option>
+                    <option value="Lesotho">Lesotho 🇱🇸</option>
+                    <option value="Liberia">Liberia 🇱🇸</option>
+                    <option value="Libya">Libya 🇱🇾</option>
+                    <option value="Liechtenstein">Liechtenstein 🇱🇮</option>
+                    <option value="Lithuania">Lithuania 🇱🇹</option>
+                    <option value="Luxembourg">Luxembourg 🇱🇺</option>
+                    <option value="Madagascar">Madagascar 🇲🇬</option>
+                    <option value="Malawi">Malawi 🇲🇼</option>
+                    <option value="Malaysia">Malaysia 🇲🇾</option>
+                    <option value="Maldives">Maldives 🇲🇻</option>
+                    <option value="Mali">Mali 🇲🇱</option>
+                    <option value="Malta">Malta 🇲🇹</option>
+                    <option value="Marshall Islands">Marshall Islands 🇲🇭</option>
+                    <option value="Mauritania">Mauritania 🇲🇷</option>
+                    <option value="Mauritius">Mauritius 🇲🇺</option>
+                    <option value="Mexico">Mexico 🇲🇽</option>
+                    <option value="Micronesia">Micronesia 🇵🇸</option>
+                    <option value="Moldova">Moldova 🇲🇩</option>
+                    <option value="Monaco">Monaco 🇲🇨</option>
+                    <option value="Mongolia">Mongolia 🇲🇳</option>
+                    <option value="Montenegro">Montenegro 🇲🇪</option>
+                    <option value="Morocco">Morocco 🇲🇦</option>
+                    <option value="Mozambique">Mozambique 🇲🇿</option>
+                    <option value="Myanmar (formerly Burma)">Myanmar (formerly Burma) 🇲🇲</option>
+                    <option value="Namibia">Namibia 🇳🇦</option>
+                    <option value="Nauru">Nauru 🇳🇷</option>
+                    <option value="Nepal">Nepal 🇳🇵</option>
+                    <option value="Netherlands">Netherlands 🇳🇱</option>
+                    <option value="New Zealand">New Zealand 🇳🇿</option>
+                    <option value="Nicaragua">Nicaragua 🇳🇮</option>
+                    <option value="Niger">Niger 🇳🇪</option>
+                    <option value="Nigeria">Nigeria 🇳🇬</option>
+                    <option value="North Macedonia">North Macedonia 🇲🇰</option>
+                    <option value="Norway">Norway 🇳🇴</option>
+                    <option value="Oman">Oman 🇴🇲</option>
+                    <option value="Pakistan">Pakistan 🇵🇰</option>
+                    <option value="Palau">Palau 🇵🇼</option>
+                    <option value="Palestine State">Palestine State 🇵🇸</option>
+                    <option value="Panama">Panama 🇵🇦</option>
+                    <option value="Papua New Guinea">Papua New Guinea 🇵🇬</option>
+                    <option value="Paraguay">Paraguay 🇵🇾</option>
+                    <option value="Peru">Peru 🇵🇪</option>
+                    <option value="Philippines">Philippines 🇵🇭</option>
+                    <option value="Poland">Poland 🇵🇱</option>
+                    <option value="Portugal">Portugal 🇵🇹</option>
+                    <option value="Qatar">Qatar 🇶🇦</option>
+                    <option value="Romania">Romania 🇷🇴</option>
+                    <option value="Russia">Russia 🇷🇺</option>
+                    <option value="Rwanda">Rwanda 🇷🇼</option>
+                    <option value="Saint Kitts and Nevis">Saint Kitts and Nevis 🇰🇳</option>
+                    <option value="Saint Lucia">Saint Lucia 🇱🇨</option>
+                    <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines 🇻🇨</option>
+                    <option value="Samoa">Samoa 🇼🇸</option>
+                    <option value="San Marino">San Marino 🇸🇲</option>
+                    <option value="Sao Tome and Principe">Sao Tome and Principe 🇸🇹</option>
+                    <option value="Saudi Arabia">Saudi Arabia 🇸🇦</option>
+                    <option value="Senegal">Senegal 🇸🇳</option>
+                    <option value="Serbia">Serbia 🇷🇸</option>
+                    <option value="Seychelles">Seychelles 🇸🇨</option>
+                    <option value="Sierra Leone">Sierra Leone 🇸🇱</option>
+                    <option value="Singapore">Singapore 🇸🇬</option>
+                    <option value="Slovakia">Slovakia 🇸🇰</option>
+                    <option value="Slovenia">Slovenia 🇸🇮</option>
+                    <option value="Solomon Islands">Solomon Islands 🇸🇧</option>
+                    <option value="Somalia">Somalia 🇸🇴</option>
+                    <option value="South Africa">South Africa 🇿🇦</option>
+                    <option value="South Sudan">South Sudan 🇸🇸</option>
+                    <option value="Spain">Spain 🇪🇸</option>
+                    <option value="Sri Lanka">Sri Lanka 🇱🇰</option>
+                    <option value="Sudan">Sudan 🇸🇩</option>
+                    <option value="Suriname">Suriname 🇸🇷</option>
+                    <option value="Sweden">Sweden 🇸🇪</option>
+                    <option value="Switzerland">Switzerland 🇨🇭</option>
+                    <option value="Syria">Syria 🇸🇾</option>
+                    <option value="Taiwan">Taiwan 🇹🇼</option>
+                    <option value="Tajikistan">Tajikistan 🇹🇯</option>
+                    <option value="Tanzania">Tanzania 🇹🇿</option>
+                    <option value="Thailand">Thailand 🇹🇭</option>
+                    <option value="Timor-Leste">Timor-Leste 🇹🇱</option>
+                    <option value="Togo">Togo 🇹🇬</option>
+                    <option value="Tonga">Tonga 🇹🇴</option>
+                    <option value="Trinidad and Tobago">Trinidad and Tobago 🇹🇹</option>
+                    <option value="Tunisia">Tunisia 🇹🇳</option>
+                    <option value="Turkey">Turkey 🇹🇷</option>
+                    <option value="Turkmenistan">Turkmenistan 🇹🇲</option>
+                    <option value="Tuvalu">Tuvalu 🇹🇻</option>
+                    <option value="Uganda">Uganda 🇺🇬</option>
+                    <option value="Ukraine">Ukraine 🇺🇦</option>
+                    <option value="United Arab Emirates">United Arab Emirates 🇦🇪</option>
+                    <option value="United Kingdom">United Kingdom 🇬🇧</option>
+                    <option value="United States">United States 🇺🇸</option>
+                    <option value="Uruguay">Uruguay 🇺🇾</option>
+                    <option value="Uzbekistan">Uzbekistan 🇺🇿</option>
+                    <option value="Vanuatu">Vanuatu 🇻🇺</option>
+                    <option value="Vatican City">Vatican City 🇻🇦</option>
+                    <option value="Venezuela">Venezuela 🇻🇪</option>
+                    <option value="Vietnam">Vietnam 🇻🇳</option>
+                    <option value="Yemen">Yemen 🇾🇪</option>
+                    <option value="Zambia">Zambia 🇿🇲</option>
+                    <option value="Zimbabwe">Zimbabwe 🇿🇼</option>
+                </select>
+               
+            </div>
+            <div class="input-container date-container">
+                <label for="dateOfBirth" class="date-label">Date of Birth:</label>
+                <input type="date" id="dateOfBirth" required>
+            </div>
+            <div class="input-container education-container">
+                <label for="educationStatus" class="education-label">Education Status:</label>
+                <select id="educationStatus" required>
+                    <option value="" disabled selected>Select your education status</option>
+                    <option value="BTech">B.Tech</option>
+                    <option value="BE">B.E.</option>
+                    <option value="PhD">Ph.D.</option>
+                    <option value="Schooling">Schooling</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            
+            <div class="input-container seeking-job-container">
+                <label>Seeking jobs in Dubai:</label>
+                <div class="radio-group">
+                    <input type="radio" id="seekingJobYes" name="seekingJob" value="yes" required>
+                    <label for="seekingJobYes">Yes</label>
+                </div>
+                <div class="radio-group">
+                    <input type="radio" id="seekingJobNo" name="seekingJob" value="no">
+                    <label for="seekingJobNo">No</label>
+                </div>
+            </div>
+            <button type="button" onclick="register()">Register</button>
+        </form>
+        <div id="registerMessage" style="display: none; color: #D8A0C4;"></div>
+    </div>
+</div>
+
+
+    
+
+        <!-- Welcome Section -->
+        <div id="welcomeSection" style="display: none;">
+            <h1>Welcome to Explore Dubai!</h1>
+            <div id="welcomeMessage" style="display: none; color: #D8A0C4;"></div>
+            <nav class="top-buttons">
+                <button onclick="showSection('home')">Home</button>
+                <button onclick="showSection('about')">About</button>
+                <button onclick="showSection('places')">Places</button>
+                <button onclick="showSection('contact')">Contact</button>
+            </nav>
+        </div>
+
+        <!-- Home Content -->
+        <!-- Dubai Content -->
+        <div id="homeContent" style="display: none;">
+            <h2 style="font-size: 3em; font-weight: bold; color: purple; font-style: italic; text-align: center;">Discover the Wonders of Dubai</h2>
+            <div style="font-size: 2em; color: white; font-style: italic; line-height: 1.5;">
+                <p><strong>Introduction to Dubai:</strong> Dubai transformed from a fishing village to a global metropolis, known for its futuristic skyline, luxury shopping, and vibrant culture.</p>
+                <p><strong>Architectural Marvels:</strong> Burj Khalifa is the world’s tallest building, offering unparalleled views of the city.</p>
+                <p><strong>Dubai Mall:</strong> Features over 1,200 retail outlets, Dubai Aquarium and Underwater Zoo, an ice rink, cinema, and diverse restaurants.</p>
+                <p><strong>Palm Jumeirah:</strong> An artificial archipelago shaped like a palm tree, home to luxury hotels like Atlantis, The Palm, and attractions such as Aquaventure Waterpark and The Lost Chambers Aquarium.</p>
+                <p><strong>Historical and Cultural Attractions:</strong> Dubai Museum in Al Fahidi Fort and the historic district of Al Bastakiya with traditional architecture.</p>
+                <p><strong>Culinary Scene:</strong> Offers a diverse range of food from traditional Emirati dishes to international cuisine, with authentic experiences at traditional souks like Gold Souk and Spice Souk.</p>
+                <p><strong>Events and Festivals:</strong> Includes Dubai Shopping Festival, Dubai International Film Festival, Art Dubai, and Dubai World Cup, the world’s richest horse race.</p>
+                <p><strong>Outdoor Activities:</strong> Beaches such as Jumeirah Beach and Kite Beach, and activities at Dubai Desert Conservation Reserve like dune bashing, sandboarding, and camel rides.</p>
+                <p><strong>Sustainability and Innovation:</strong> Projects like Dubai Creek Harbour and Dubai Expo 2020 focus on innovation and sustainability.</p>
+                <p><strong>Family Attractions:</strong> Dubai Parks and Resorts including Motiongate, Bollywood Parks, and Legoland, and the Miracle Garden with millions of blooming flowers.</p>
+                <p><strong>Nightlife:</strong> Includes rooftop bars, beach clubs, and vibrant areas like Marina and JBR.</p>
+                <p><strong>Luxury:</strong> The Burj Al Arab, known as the world’s only seven-star hotel, offering world-class dining, luxurious suites, and unparalleled service.</p>
+                <p><strong>Strategic Location and Infrastructure:</strong> A global hub for trade, finance, and tourism with busy airports and an efficient Dubai Metro system.</p>
+                <p><strong>City of Contrasts:</strong> Where tradition meets modernity and desert meets the sea, offering adventure, relaxation, and a glimpse into the future.</p>
+            </div>
+        </div>
+        
+
+
+        <!-- About Content -->
+        <div id="aboutContent" style="display: none;">
+            <h2 style="font-size: 3em; font-weight: bold; color: rgb(157, 39, 161); font-style: italic;">About Dubai</h2>
+            <p style="font-size: 2em; color: white; font-style: italic;">
+                Dubai is a city that perfectly blends its rich cultural heritage with modern advancements. Known for its towering skyscrapers, luxurious shopping malls, and thriving nightlife, Dubai offers a unique experience for visitors. From the traditional souks to the extravagant resorts, the city has something to offer for everyone. Explore its historical landmarks, beautiful beaches, and innovative architectural marvels.
+            </p>
+        
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(125, 32, 156); font-style: italic;">Dubai Cultural Highlights</h3>
+            <p style="font-size: 2em; color: white; font-style: italic;">
+                Dubai’s cultural scene is a reflection of its diverse population. The city celebrates a variety of cultural festivals, ranging from the Dubai Shopping Festival to the Dubai International Film Festival, showcasing a mix of traditional and modern influences. Traditional art forms like calligraphy, pottery, and falconry are preserved and promoted, while contemporary art is thriving in galleries and exhibitions across the city. The Al Fahidi Historical District and the Dubai Museum are key locations where one can explore the rich cultural heritage of Dubai.
+            </p>
+            <p style="font-size: 2em; color: white; font-style: italic;">
+                The city's cultural evolution is also evident in its architecture, with landmarks like the Jumeirah Mosque, a stunning example of Islamic architecture, juxtaposed against the modern marvels like the Burj Khalifa and the futuristic Dubai Opera. These structures are not just tourist attractions but also symbols of Dubai's commitment to cultural preservation and modernity. Dubai also hosts several international art and cultural events, such as Art Dubai, which attracts artists and collectors from around the globe, further cementing its status as a global cultural hub.
+            </p>
+            <p style="font-size: 2em; color: white; font-style: italic;">
+                The government’s support for cultural initiatives is evident through various projects like the Dubai Culture and Arts Authority, which aims to establish Dubai as a global creative and cultural hub. The authority organizes events, exhibitions, and educational programs to promote cultural understanding and appreciation among residents and visitors. Additionally, the city’s cultural festivals and events often incorporate traditional Emirati customs, offering a glimpse into the local way of life, from traditional dances like Al-Ayyala to the unique flavors of Emirati cuisine.
+            </p>
+        
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(138, 26, 152); font-style: italic;">Their Development in Scientific Research</h3>
+            <p style="font-size: 2em; color: white; font-style: italic;">
+                Dubai is rapidly becoming a center for scientific research and innovation. The Dubai Science Park is a key initiative that provides a platform for companies in the science, healthcare, and energy sectors to collaborate and innovate. The city is also home to several research institutions and universities that are making significant contributions to fields such as biotechnology, renewable energy, and artificial intelligence. Dubai’s commitment to research and development is a driving force behind its vision of becoming a leading global hub for science and technology.
+            </p>
+            <p style="font-size: 2em; color: white; font-style: italic;">
+                The Dubai Future Foundation is one of the most ambitious initiatives in the city, focusing on shaping the future of various industries through innovative research and development. The foundation hosts events like the Dubai Future Forum and the Global Blockchain Council, which bring together thought leaders and innovators from around the world. These events are platforms for discussing the latest trends in technology and exploring how they can be applied to improve various sectors, from healthcare to transportation.
+            </p>
+            <p style="font-size: 2em; color: white; font-style: italic;">
+                In the realm of healthcare, Dubai is making strides with projects like the Mohammed Bin Rashid University of Medicine and Health Sciences, which aims to train the next generation of medical professionals and conduct groundbreaking research in medical sciences. Additionally, the Dubai Healthcare City is a dedicated zone that brings together healthcare providers, researchers, and educators, fostering an environment of collaboration and innovation in medical research and treatment.
+            </p>
+            <p style="font-size: 2em; color: white; font-style: italic;">
+                The city is also a pioneer in sustainability research, with projects like the Mohammed Bin Rashid Al Maktoum Solar Park, one of the largest renewable energy projects in the world. This park is part of Dubai's broader strategy to reduce its carbon footprint and transition to a more sustainable energy model. The city’s focus on research and development in sustainability is also reflected in its urban planning, with smart city initiatives that incorporate IoT, AI, and big data to create a more efficient, sustainable, and livable urban environment.
+            </p>
+        
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(129, 25, 127); font-style: italic;">Join the Dubai Community</h3>
+            <p style="font-size: 2em; color: white; font-style: italic;">
+                Becoming a part of Dubai's vibrant community means engaging with a city that is constantly evolving and striving for excellence. Whether you are interested in contributing to its cultural scene, engaging in cutting-edge research, or simply enjoying its many attractions, Dubai offers countless opportunities for growth and connection. By joining this community, you are not just a visitor but a participant in Dubai's ongoing story of innovation and tradition.
+            </p>
+            <button onclick="joinCommunity()" style="font-size: 4em; color: white; background-color: black; padding: 10px 20px; border: none; cursor: pointer;">
+                Join Here
+            </button>
+        </div>
+        
+        <script>
+            function joinCommunity() {
+                alert('You have successfully joined the Dubai community!');
+            }
+        </script>
+        
+
+       <!-- Places Content -->
+       <div id="placesContent" style="display: none;">
+        <h2 style="font-size: 4em; font-weight: bold; color: rgb(150, 48, 141); font-style: italic;">Special Places in Dubai</h2>
+    
+        <!-- Place 1: Burj Khalifa -->
+        <div class="place">
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(135, 45, 152);">Burj Khalifa</h3>
+            <img src="images\image.png" alt="Burj Khalifa" style="width: 300px; height: 200px;">
+            <p style="font-size: 2em; color: white; font-style: italic;">The Burj Khalifa is the tallest building in the world, offering breathtaking views of Dubai. It is a must-visit landmark for tourists.</p>
+            <button onclick="bookTickets('Burj Khalifa')" style="font-size: 2em; color: white; background-color: black; padding: 10px 20px; border: none; cursor: pointer;">Get Your Tickets</button>
+        </div>
+    
+        <!-- Place 2: Dubai Mall -->
+        <div class="place">
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(125, 40, 124);">Dubai Mall</h3>
+            <img src="images\image_copy.png" alt="Dubai Mall" style="width: 300px; height: 200px;">
+            <p style="font-size: 2em; color: white; font-style: italic;">Dubai Mall is one of the largest shopping centers globally, featuring a wide range of shops, dining options, and entertainment facilities.</p>
+            <button onclick="bookTickets('Dubai Mall')" style="font-size: 2em; color: white; background-color: black; padding: 10px 20px; border: none; cursor: pointer;">Get Your Tickets</button>
+        </div>
+    
+        <!-- Additional 10 Places -->
+        <div class="place">
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(144, 56, 144);">Palm Jumeirah</h3>
+            <img src="images\image_copy_2.png" alt="Palm Jumeirah" style="width: 300px; height: 200px;">
+            <p style="font-size: 2em; color: white; font-style: italic;">An artificial island, Palm Jumeirah is one of Dubai’s most iconic landmarks, offering luxury hotels, pristine beaches, and fine dining.</p>
+            <button onclick="bookTickets('Palm Jumeirah')" style="font-size: 2em; color: white; background-color: black; padding: 10px 20px; border: none; cursor: pointer;">Get Your Tickets</button>
+        </div>
+    
+        <div class="place">
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(124, 36, 126);">Dubai Marina</h3>
+            <img src="images\image_copy_3.png" alt="Dubai Marina" style="width: 300px; height: 200px;">
+            <p style="font-size: 2em; color: white; font-style: italic;">Dubai Marina is an artificial canal city, famous for its stunning skyline, luxury apartments, and waterfront restaurants.</p>
+            <button onclick="bookTickets('Dubai Marina')" style="font-size: 2em; color: white; background-color: black; padding: 10px 20px; border: none; cursor: pointer;">Get Your Tickets</button>
+        </div>
+    
+        <div class="place">
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(140, 47, 138);">Burj Al Arab</h3>
+            <img src="images\image_copy_4.png" alt="Burj Al Arab" style="width: 300px; height: 200px;">
+            <p style="font-size: 2em; color: white; font-style: italic;">The Burj Al Arab is one of the most luxurious hotels in the world, symbolizing Dubai’s modernity and innovation.</p>
+            <button onclick="bookTickets('Burj Al Arab')" style="font-size: 2em; color: white; background-color: black; padding: 10px 20px; border: none; cursor: pointer;">Get Your Tickets</button>
+        </div>
+    
+        <div class="place">
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(153, 51, 153);">The Dubai Fountain</h3>
+            <img src="images\image_copy_5.png" alt="The Dubai Fountain" style="width: 300px; height: 200px;">
+            <p style="font-size: 2em; color: white; font-style: italic;">The Dubai Fountain is the world’s largest choreographed fountain system, located on the Burj Khalifa Lake.</p>
+            <button onclick="bookTickets('The Dubai Fountain')" style="font-size: 2em; color: white; background-color: black; padding: 10px 20px; border: none; cursor: pointer;">Get Your Tickets</button>
+        </div>
+    
+        <div class="place">
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(132, 45, 132);">Desert Safari</h3>
+            <img src="images\image_copy_6.png" alt="Desert Safari" style="width: 300px; height: 200px;">
+            <p style="font-size: 2em; color: white; font-style: italic;">Experience the thrill of dune bashing, camel rides, and a traditional Bedouin camp with Dubai’s Desert Safari adventure.</p>
+            <button onclick="bookTickets('Desert Safari')" style="font-size: 2em; color: white; background-color: black; padding: 10px 20px; border: none; cursor: pointer;">Get Your Tickets</button>
+        </div>
+    
+        <div class="place">
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(124, 39, 128);">Dubai Creek</h3>
+            <img src="images\image_copy_7.png" alt="Dubai Creek" style="width: 300px; height: 200px;">
+            <p style="font-size: 2em; color: white; font-style: italic;">Dubai Creek is a saltwater creek that was the foundation of the city’s trade history, offering traditional dhow cruises and a glimpse into old Dubai.</p>
+            <button onclick="bookTickets('Dubai Creek')" style="font-size: 2em; color: white; background-color: black; padding: 10px 20px; border: none; cursor: pointer;">Get Your Tickets</button>
+        </div>
+    
+        <div class="place">
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(129, 48, 130);">Ski Dubai</h3>
+            <img src="images\image_copy_8.png" alt="Ski Dubai" style="width: 300px; height: 200px;">
+            <p style="font-size: 2em; color: white; font-style: italic;">Ski Dubai, located in the Mall of the Emirates, is the Middle East’s first indoor ski resort offering snowboarding, skiing, and penguin encounters.</p>
+            <button onclick="bookTickets('Ski Dubai')" style="font-size: 2em; color: white; background-color: black; padding: 10px 20px; border: none; cursor: pointer;">Get Your Tickets</button>
+        </div>
+    
+        <div class="place">
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(134, 37, 139);">Dubai Aquarium & Underwater Zoo</h3>
+            <img src="images\image_copy_9.png" alt="Dubai Aquarium" style="width: 300px; height: 200px;">
+            <p style="font-size: 2em; color: white; font-style: italic;">The Dubai Aquarium, located in Dubai Mall, is one of the largest indoor aquariums in the world, featuring thousands of aquatic animals.</p>
+            <button onclick="bookTickets('Dubai Aquarium')" style="font-size: 2em; color: white; background-color: black; padding: 10px 20px; border: none; cursor: pointer;">Get Your Tickets</button>
+        </div>
+    
+        <div class="place">
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(137, 37, 132);">Dubai Miracle Garden</h3>
+            <img src="images\image_copy_10.png" alt="Dubai Miracle Garden" style="width: 300px; height: 200px;">
+            <p style="font-size: 2em; color: white; font-style: italic;">The Dubai Miracle Garden is the world’s largest natural flower garden, showcasing a breathtaking array of floral displays and designs.</p>
+            <button onclick="bookTickets('Dubai Miracle Garden')" style="font-size: 2em; color: white; background-color: black; padding: 10px 20px; border: none; cursor: pointer;">Get Your Tickets</button>
+        </div>
+    
+        <div class="place">
+            <h3 style="font-size: 3em; font-weight: bold; color: rgb(143, 40, 139);">Dubai Frame</h3>
+            <img src="images\image copy 11.png" alt="Dubai Frame" style="width: 300px; height: 200px;">
+            <p style="font-size: 2em; color: white; font-style: italic;">Dubai Frame offers a unique perspective of old and new Dubai from its observation deck, providing panoramic views and interactive exhibits.</p>
+            <button onclick="bookTickets('Dubai Frame')" style="font-size: 2em; color: white; background-color: black; padding: 10px 20px; border: none; cursor: pointer;">Get Your Tickets</button>
+        </div>
+    
+    </div>
+    
+
+
+       <!-- Contact Content -->
+<!-- Contact Content -->
+<div id="contactContent" style="display: none;">
+    <h2 style="font-size: 4em; font-weight: bold; color: rgb(132, 45, 126); text-align: center; font-style: italic;">Contact Us</h2>
+    <p style="font-size: 2em; color: white; text-align: center; font-style: italic;">For any inquiries or event registrations, please reach out to us using the contact form below.</p>
+    
+    <!-- Contact Form -->
+    <form id="contactForm" style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: rgba(255, 255, 255, 0.1); border-radius: 10px;" onsubmit="return handleSubmit();">
+        <div style="margin-bottom: 20px;">
+            <input type="text" id="contactName" placeholder="Name" required style="width: 100%; padding: 15px; font-size: 1.5em; font-style: italic; border-radius: 5px; border: none; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <input type="email" id="contactEmail" placeholder="Email" required style="width: 100%; padding: 15px; font-size: 1.5em; font-style: italic; border-radius: 5px; border: none; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <input type="text" id="contactPhone" placeholder="Phone Number" required style="width: 100%; padding: 15px; font-size: 1.5em; font-style: italic; border-radius: 5px; border: none; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        </div>
+        <div style="margin-bottom: 20px;">
+            <textarea id="contactMessage" placeholder="Your Message" required style="width: 100%; padding: 15px; font-size: 1.5em; font-style: italic; height: 150px; border-radius: 5px; border: none; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"></textarea>
+        </div>
+        <div style="text-align: center;">
+            <button type="submit" style="font-size: 2em; color: white; background-color: black; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); font-style: italic;">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function handleSubmit() {
+        alert("Thanks for submitting!");
+        return false; // Prevents actual form submission
+    }
+</script>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
